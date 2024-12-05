@@ -1,0 +1,37 @@
+<div class="feedback-details-container" *ngIf="feedbackDetails">
+  <h2>Feedback Details</h2>
+  <mat-card>
+    <mat-card-title>Feedback #{{ feedbackDetails.feedbackID }}</mat-card-title>
+    <mat-card-content>
+      <p><strong>Type:</strong> {{ getFeedbackTypeLabel(feedbackDetails.feedbackType) }}</p>
+      <p><strong>Content:</strong> {{ feedbackDetails.feedbackContent }}</p>
+      <p><strong>Status:</strong> {{ getStatusLabel(feedbackDetails.status) }}</p>
+      <p><strong>Created At:</strong> {{ feedbackDetails.createdAt | date:'medium' }}</p>
+      <p><strong>User:</strong> {{ feedbackDetails.userName }}</p>
+    </mat-card-content>
+  </mat-card>
+  <h3>Comments</h3>
+  <form [formGroup]="commentForm" (ngSubmit)="submitComment()" class="comment-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Comment</mat-label>
+      <textarea matInput formControlName="commentText" rows="4"></textarea>
+      <mat-error *ngIf="commentForm.get('commentText')?.hasError('required')">Comment is required.</mat-error>
+      <mat-error *ngIf="commentForm.get('commentText')?.hasError('maxlength')">Comment cannot exceed 500 characters.</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="commentForm.invalid">Post Comment</button>
+  </form>
+  <mat-list *ngIf="comments.length > 0; else noComments">
+    <mat-list-item *ngFor="let comment of comments">
+      <div mat-line class="mat-line">{{ comment.userName }}: {{ comment.commentText }}</div>
+      <div mat-line class="mat-line">
+        <small>{{ comment.createdAt | date:'medium' }}</small>
+      </div>
+    </mat-list-item>
+  </mat-list>
+
+
+
+  <ng-template #noComments>
+    <p>No comments available for this feedback.</p>
+  </ng-template>
+</div>

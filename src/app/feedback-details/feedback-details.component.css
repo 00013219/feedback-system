@@ -1,0 +1,25 @@
+.feedback-details-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+mat-card {
+  margin-bottom: 20px;
+  padding: 20px;
+}
+.comment-form{
+  display: flex;
+  flex-direction: column;
+}
+
+mat-list-item{
+  background-color: gray;
+  padding: 30px 15px 30px 15px;
+  border-radius: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.mat-line{
+  color: white;
+}

@@ -1,0 +1,22 @@
+.home-container {
+  margin: 20px;
+  text-align: center;
+}
+h2 {
+  color: #333;
+}
+.delete-button{
+  margin-left: 10px;
+}
+.delete-button p{
+  color: red;
+}
+.delete-button mat-icon{
+  color: red;
+}
+.details-button{
+  margin-right: 10px;
+}
+.create-button{
+  margin-bottom: 20px;
+}

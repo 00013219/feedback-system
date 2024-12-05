@@ -1,0 +1,60 @@
+<div class="feedback-wrapper">
+  <div class="feedback-container">
+    <h2>Submit Feedback</h2>
+    <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" novalidate>
+      <mat-form-field appearance="fill">
+        <mat-label>Feedback Type</mat-label>
+        <mat-select formControlName="feedbackType">
+          <mat-option
+            *ngFor="let type of feedbackTypes"
+            [value]="type.value"
+          >
+            {{ type.label }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="feedbackForm.get('feedbackType')?.hasError('required')">
+          Feedback type is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Feedback Content</mat-label>
+        <textarea
+          matInput
+          formControlName="feedbackContent"
+          placeholder="Describe your feedback"
+          rows="5"
+        ></textarea>
+        <mat-error
+          *ngIf="feedbackForm.get('feedbackContent')?.hasError('required')"
+        >
+          Feedback content is required.
+        </mat-error>
+        <mat-error
+          *ngIf="feedbackForm.get('feedbackContent')?.hasError('maxlength')"
+        >
+          Feedback content must be less than 1000 characters.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option
+            *ngFor="let status of statuses"
+            [value]="status.value"
+          >
+            {{ status.label }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="feedbackForm.get('status')?.hasError('required')">
+          Status is required.
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">
+        Submit Feedback
+      </button>
+    </form>
+  </div>
+</div>
