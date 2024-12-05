@@ -12,6 +12,12 @@ After installing any of these studios run it, press Open Project, choose the dir
 
 After running the backend, we should turn to the frontend initialization. Download Visual Studio Code, run it, press Open Folder, choose cloned repository direction, chose frontend folder. After all that, open Terminal in the VS Code and run the project with the command:
 
+First before starting: 
+
+```bash
+npm install
+```
+and after that:
 ```bash
 ng serve
 ```
